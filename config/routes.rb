@@ -9,7 +9,7 @@ Todo::Application.routes.draw do
 
   resources :items, only: [:destroy]
 
-  root to: 'users#new'
+  root to: 'items#new'
   
   namespace :api, defaults: { format: :json } do
      resources :users
