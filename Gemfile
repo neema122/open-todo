@@ -44,6 +44,7 @@ gem 'spring',        group: :development
 
 gem 'bootstrap-sass'
 gem 'active_model_serializers'
+gem 'haml'
 
 group :test do
   gem 'factory_girl_rails'
