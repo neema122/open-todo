@@ -1,9 +1,11 @@
 class List < ActiveRecord::Base
   belongs_to :user
   has_many :items
+  
+  validates :permission, inclusion: { in: self.permission_options, message: "you are not allowed to do this"}
 
   def self.permission_options
-    %w(private viewable open)
+    %w(private viewable open) # ["private, "viewable, "open]
   end
 
   def add(item_description)
