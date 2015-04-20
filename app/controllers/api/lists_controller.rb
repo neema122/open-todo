@@ -1,17 +1,19 @@
 class Api::ListsController < ApplicationController
    before_action :authenticated?
  
-   def create
+   def create 
     @user = User.where(user_params).first
     if @user
-      @list = @user.lists.find(params[:list_id])
-      if @list.add(item_params[:description])
-        render json: @list.items.last
+      @list = @user.lists.build(list_params)
+      if @list.save
+        render json: @list
       else
-        error(422, "Item was not created")
+        message = "List was not created"
+        error(422, message) 
       end
     else
-      error(422, "User credentials are not correct")
+      message = "User credentials are not correct"
+      error(422, message) 
     end
   end
 
