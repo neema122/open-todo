@@ -51,5 +51,16 @@ class Api::ListsController < ApplicationController
 #       error(422, message)
 #     end
 #   end
+
+private
+
+def user_params
+    params.require(:user).permit(:username, :password)
+  end
+  def list_params
+    params.require(:list).permit(:name, :permissions)
+  end
+end
+
  
  end

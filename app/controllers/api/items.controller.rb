@@ -17,5 +17,10 @@ class Api::ItemsController < ApplicationController
       render json: { errors: item.errors.full_messages }, status: :unprocessable_entity
    end
  end
-
- end
+  
+  private
+  
+  def item_params
+    params.require(:item).permit(:description)
+  end
+end
